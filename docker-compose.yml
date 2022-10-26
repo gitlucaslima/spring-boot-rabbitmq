@@ -9,6 +9,7 @@ services:
   messagequeue:
     container_name: app
     build: .
+    command: mvn clean spring-boot:run
     ports:
       - "8282:8282"
     depends_on:
