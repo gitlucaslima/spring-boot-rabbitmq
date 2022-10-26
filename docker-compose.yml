@@ -9,7 +9,7 @@ services:
   messagequeue:
     container_name: app
     build: .
-    command: mvn clean spring-boot:run
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
     ports:
       - "8282:8282"
     depends_on:

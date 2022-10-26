@@ -33,24 +33,24 @@ $ cd spring-boot-rabbitmq
 
 ## Maven
 
+Primeiro rode o RabbitMQ.<br>
+Caso não tenha o RabbitMQ instalado, execute o seguinte comando via Docker:
+
+```
+$ docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq:management
+```
+
 Para carregar o projeto, digite no terminal:
 
 ```
-$ ./mvnw spring-boot:run
+$ ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
 Aguarde carregar todo o serviço web. <br>
 
-## Docker
+## Docker (Opcional)
 
-Para rodar o projeto via Docker, bastar executar o seguinte comando:
-
-```
-$ docker build -t projeto .
-$ docker run -p 8282:8282 -d projeto
-```
-
-Ou via Docker-Compose:
+Para rodar o projeto via Docker-Compose, basta executar o comando:
 
 ```
 $ docker-compose up
