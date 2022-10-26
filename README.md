@@ -65,6 +65,19 @@ Para encerrar tudo digite:
 $ docker-compose down
 ```
 
+## RabbitMQ
+
+Para acessar o painel do RabbitMQ, abra o navegador e digite o endereço: <br>
+
+http://localhost:15672
+
+Em seguida, digite "guest" para usuário e senha.
+Depois crie a fila e a exchange com os mesmos nomes do arquivo application.properties.
+
+rabbitmq.queue=messagequeue
+rabbitmq.exchange=messagequeue-exchange
+rabbitmq.routingKey=messagequeue-routeKey
+
 Para testar a aplicação abra o Postman e insira os seguintes dados:
 
 POST
@@ -78,12 +91,6 @@ http://localhost:8282/book/send-message
     "genre": "m"
 }
 ```
-
-## RabbitMQ
-
-Para acessar o painel do RabbitMQ, abra o navegador e digite o endereço: <br>
-
-http://localhost:15672
 
 ## Licença
 
