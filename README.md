@@ -71,16 +71,16 @@ Para acessar o painel do RabbitMQ, abra o navegador e digite o endereço: <br>
 
 http://localhost:15672
 
-Em seguida, digite "guest" para usuário e senha.
-Depois crie a fila e a exchange com os mesmos nomes do arquivo application.properties.
+Em seguida, digite "guest" para usuário e senha.<br>
+Depois crie a fila e a exchange com os mesmos nomes do arquivo application.properties.<br>
 
-rabbitmq.queue=messagequeue
-rabbitmq.exchange=messagequeue-exchange
-rabbitmq.routingKey=messagequeue-routeKey
+rabbitmq.queue=messagequeue<br>
+rabbitmq.exchange=messagequeue-exchange<br>
+rabbitmq.routingKey=messagequeue-routeKey<br>
 
-Para testar a aplicação abra o Postman e insira os seguintes dados:
+Para testar a aplicação abra o Postman e insira os seguintes dados:<br>
 
-POST
+POST<br>
 http://localhost:8282/book/send-message
 
 ```
