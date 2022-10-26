@@ -73,7 +73,7 @@ http://localhost:15672
 
 Em seguida, digite "guest" para usuário e senha.<br>
 
-# Teste da Messageria
+## Teste da Messageria
 
 Para testar a aplicação abra o Postman e insira os seguintes dados:<br>
 
