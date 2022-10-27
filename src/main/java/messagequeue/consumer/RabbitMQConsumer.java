@@ -15,8 +15,10 @@ public class RabbitMQConsumer {
     @RabbitListener(queues = {"${rabbitmq.queue}"})
     public void receive(@Payload Book book) {
         log.info("Message received successfully at " + LocalDateTime.now());
-        log.info("\nauthor---------->" + book.getAuthor() + "\n" + "title---->" + book.getTitle()
-                + "\n" + "publisher----------->" + book.getPublisher() + "\n" + "genre----->" + book.getGenre());
+        log.info("\n Author ---------> " + book.getAuthor()
+                + "\n Title ----------> " + book.getTitle()
+                + "\n Publisher ------> " + book.getPublisher()
+                + "\n Genre ----------> " + book.getGenre());
     }
 
 }

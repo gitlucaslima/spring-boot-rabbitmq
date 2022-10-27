@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableRabbit
 @SpringBootApplication
-public class MessageQueApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MessageQueApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

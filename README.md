@@ -89,6 +89,21 @@ http://localhost:8282/book/send-message
 }
 ```
 
+Após o envio retornará a seguinte mensagem: <br>
+
+```
+Book message sent successfully.
+```
+
+E no console:<br>
+
+```
+ Author ---------> aaaaaaaaaa
+ Title ----------> bbbbbbbbbb
+ Publisher ------> cccccccc
+ Genre ----------> m
+```
+
 ## Licença
 
 Projeto licenciado sob <a href="LICENSE">The MIT License (MIT)</a>.<br><br>
