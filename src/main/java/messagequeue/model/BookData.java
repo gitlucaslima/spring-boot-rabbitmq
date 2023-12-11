@@ -1,6 +1,7 @@
 package messagequeue.model;
 
 import lombok.Data;
+import messagequeue.model.enums.Genre;
 
 import javax.validation.constraints.Size;
 
@@ -13,7 +14,7 @@ public class BookData {
     private String title;
 
     private String publisher;
-
-    private String genre;
+    
+    private Genre genre;
 
 }

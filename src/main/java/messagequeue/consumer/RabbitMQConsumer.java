@@ -19,6 +19,34 @@ public class RabbitMQConsumer {
                 + "\n Title ----------> " + book.getTitle()
                 + "\n Publisher ------> " + book.getPublisher()
                 + "\n Genre ----------> " + book.getGenre());
+
+    }
+
+    @RabbitListener(queues = {"${rabbitmq.queueFantasy}"})
+    public void receiveFantasy(@Payload Book book) {
+        log.info("Book with genere "+  book.getGenre() +" received in: " + LocalDateTime.now());
+        log.info("\n Author ---------> " + book.getAuthor()
+                + "\n Title ----------> " + book.getTitle()
+                + "\n Publisher ------> " + book.getPublisher()
+                + "\n Genre ----------> " + book.getGenre());
+    }
+
+    @RabbitListener(queues = {"${rabbitmq.queueRomance}"})
+    public void receiveRomance(@Payload Book book) {
+        log.info("Book with genere "+  book.getGenre() +" received in: " + LocalDateTime.now());
+        log.info("\n Author ---------> " + book.getAuthor()
+                + "\n Title ----------> " + book.getTitle()
+                + "\n Publisher ------> " + book.getPublisher()
+                + "\n Genre ----------> " + book.getGenre());
+    }
+
+    @RabbitListener(queues = {"${rabbitmq.queueFiction}"})
+    public void receiveFiction(@Payload Book book) {
+        log.info("Book with genere "+  book.getGenre() +" received in: " + LocalDateTime.now());
+        log.info("\n Author ---------> " + book.getAuthor()
+                + "\n Title ----------> " + book.getTitle()
+                + "\n Publisher ------> " + book.getPublisher()
+                + "\n Genre ----------> " + book.getGenre());
     }
 
 }

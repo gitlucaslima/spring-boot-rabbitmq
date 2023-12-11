@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 import messagequeue.model.Book;
 import messagequeue.model.BookData;
+import messagequeue.model.enums.Genre;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,21 +20,18 @@ public class RabbitMQProducer {
     @Value("${rabbitmq.exchange}")
     private String exchange;
 
-    @Value("${rabbitmq.routingKey}")
-    private String routingKey;
-
     public String sendBookMessage(BookData bookData) {
         Book initializedBook = null;
-        initializedBook = bookData == null ? initializedBook.builder()
+        initializedBook = bookData == null ? Book.builder()
                 .author(faker.book().author())
                 .title(faker.book().title())
-                .publisher(faker.book().publisher())
-                .genre(faker.book().genre()).build() : initializedBook.builder()
+                .genre(Genre.valueOf(faker.book().genre()))
+                .publisher(faker.book().publisher()).build() : Book.builder()
                 .author(bookData.getAuthor())
                 .title(bookData.getTitle())
                 .publisher(bookData.getPublisher())
                 .genre(bookData.getGenre()).build();
-        rabbitTemplate.convertAndSend(exchange, routingKey, initializedBook);
+        rabbitTemplate.convertAndSend(exchange, bookData.getGenre().getGenre(), initializedBook);
         log.info("Book message produced successfully.");
         return "Book message sent successfully.";
     }

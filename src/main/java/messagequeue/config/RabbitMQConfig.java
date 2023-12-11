@@ -1,5 +1,6 @@
 package messagequeue.config;
 
+import messagequeue.model.enums.Genre;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
@@ -20,8 +21,16 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
 
 @Configuration
 public class RabbitMQConfig implements RabbitListenerConfigurer {
+
     @Value("${rabbitmq.queue}")
     private String queue;
+    @Value("${rabbitmq.queueFantasy}")
+    private String queueFantasy;
+    @Value("${rabbitmq.queueFiction}")
+    private String queueFiction;
+    @Value("${rabbitmq.queueRomance}")
+    private String queueRomance;
+
     @Value("${rabbitmq.exchange}")
     private String exchange;
     @Value("${rabbitmq.routingKey}")
@@ -44,6 +53,21 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
     }
 
     @Bean
+    Queue queueFantasy() {
+        return new Queue(queueFantasy, true);
+    }
+
+    @Bean
+    Queue queueFiction() {
+        return new Queue(queueFiction, true);
+    }
+
+    @Bean
+    Queue queueRomance() {
+        return new Queue(queueRomance, true);
+    }
+
+    @Bean
     DirectExchange exchange() {
         return new DirectExchange(exchange);
     }
@@ -51,6 +75,20 @@ public class RabbitMQConfig implements RabbitListenerConfigurer {
     @Bean
     Binding binding(Queue queue, DirectExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(routingKey);
+    }
+    @Bean
+    Binding bindingQueueFantasy(Queue queueFantasy, DirectExchange exchange) {
+        return BindingBuilder.bind(queueFantasy).to(exchange).with(Genre.FANTASY);
+    }
+
+    @Bean
+    Binding bindingQueueFiction(Queue queueFiction, DirectExchange exchange) {
+        return BindingBuilder.bind(queueFiction).to(exchange).with(Genre.FICTION);
+    }
+
+    @Bean
+    Binding bindingQueueRomance(Queue queueRomance, DirectExchange exchange) {
+        return BindingBuilder.bind(queueRomance).to(exchange).with(Genre.ROMANCE);
     }
 
     @Bean

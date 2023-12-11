@@ -1,12 +1,10 @@
 package messagequeue.controller;
 
+import jdk.jfr.ContentType;
 import messagequeue.model.BookData;
 import messagequeue.producer.RabbitMQProducer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -17,9 +15,10 @@ public class BookController {
 
     private final RabbitMQProducer rabbitMQProducer;
 
-    @PostMapping(value = "/send-message")
+    @PostMapping(value = "/send-message", produces = "application/json")
+    @ResponseBody
     public String send(@Valid @RequestBody BookData bookData) {
-        return rabbitMQProducer.sendBookMessage(bookData.getAuthor()==null?null:bookData);
+        return rabbitMQProducer.sendBookMessage(bookData.getAuthor() == null ? null : bookData);
     }
 
 }
